@@ -5,7 +5,7 @@
 
 (define (sum-of-squares x y) (+ (square x) (square y)))
 
-(define (>= x y) (not (< x y)))
+(define (<= x y) (not (> x y)))
 
 ; 1 2 3
 ; 1 3 2
@@ -14,12 +14,9 @@
 ; 3 1 2
 ; 3 2 1
 
-(define (sum-of-max-and-sqr mx p q)
-  (if (>= p q)
-    (sum-of-squares mx p)
-    (sum-of-squares mx q)))
+(define (sum-of-max-2-squares x y z)
+  (cond ((and (<= x y) (<= x z)) (sum-of-squares y z))
+	((<= y z) (sum-of-squares x z))
+	(else (sum-of-squares x y))))
 
-(define (f x y z)
-  (cond ((= x (max x y z)) (sum-of-max-and-sqr x y z))
-        ((= y (max x y z)) (sum-of-max-and-sqr y x z))
-        ((= z (max x y z)) (sum-of-max-and-sqr z x y))))
+(sum-of-max-2-squares 3 2 1)
