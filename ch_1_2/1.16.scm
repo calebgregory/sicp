@@ -8,7 +8,7 @@
 (define (iter a b n)
   (if (= n 0)
       a
-      (if (even? i)
+      (if (even? n)
 	  (iter a (square b) (/ n 2))
 	  (iter (* a b) b (- n 1)))))
 (define (fast-exp base power)
